@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-app-deployment
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: dummy-app
+  template:
+    metadata:
+      labels:
+        app: dummy-app
+    spec:
+      containers:
+        - name: dummy-app
+          image: 
+          ports:
+            - containerPort: 3000

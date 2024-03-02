@@ -1,0 +1,13 @@
+# .dockerignore
+
+# Exclude node_modules directory
+node_modules
+npm-debug.log
+
+#Exclude development and build files
+.git
+.gitignore
+.dockerignore
+
+# Exclude yaml files for K8s configs
+kubernetes/
