@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dummy-app-deployment
+  name: mercury-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: dummy-app
+      app: mercury
   template:
     metadata:
       labels:
-        app: dummy-app
+        app: mercury
     spec:
       containers:
-      - name: dummy-app
-        image: gcr.io/hardy-nation-412201/mercury-optikube-dummy-app
+      - name: mercury
+        image: gcr.io/hardy-nation-412201/mercury:latest
         ports:
         - containerPort: 3000
