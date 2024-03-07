@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mercury-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mercury
+  template:
+    metadata:
+      labels:
+        app: mercury
+    spec:
+      containers:
+      - name: mercury
+        image: gcr.io/hardy-nation-412201/mercury:latest
+        ports:
+        - containerPort: 3000
