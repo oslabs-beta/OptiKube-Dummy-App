@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mercury-service
+  namespace: mercury-namespace
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 30 # Service port.
+    targetPort: 3000 # Pod's port.
+    # NodePort is automatically assigned if not specified.
+  selector:
+    app: mercury
