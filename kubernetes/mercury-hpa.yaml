@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mercury-hpa
+  namespace: mercury-namespace
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mercury-deployment
+  minReplicas: 3
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 65
