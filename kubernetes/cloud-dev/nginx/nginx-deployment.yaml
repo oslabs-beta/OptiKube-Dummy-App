@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-app-deploy
+  namespace: dummy-app
+spec:
+  selector:
+    matchLabels:
+      app: nginx-web-server
+  template:
+    metadata:
+      labels:
+        app: nginx-web-server
+    spec:
+      containers:
+      - name: dummy-nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m

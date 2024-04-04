@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-php-deploy
+  namespace: dummy-php
+spec:
+  selector:
+    matchLabels:
+      app: php-apache
+  template:
+    metadata:
+      labels:
+        app: php-apache
+    spec:
+      containers:
+      - name: dummy-php
+        image: registry.k8s.io/hpa-example
+        ports:
+        - containerPort: 9000
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dummy-php-svc
+  labels:
+    app: dummy-php
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 90
+    targetPort: 9000
+  selector:
+    app: php-apache
