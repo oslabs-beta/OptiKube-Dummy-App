@@ -11,3 +11,6 @@ npm-debug.log
 
 # Exclude yaml files for K8s configs
 kubernetes/
+
+# Exclude README
+*.md

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ok-dummy-deploy
+  namespace: opitkube-dummy
+spec:
+  selector:
+    matchLabels:
+      app: opitkube-dummy
+  template:
+    metadata:
+      labels:
+        app: optikube-dummy
+    spec:
+      containers:
+      - name: ok-dummy
+        image: jshea915/optikube_dummy_app:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ok-dummy-svc
+  labels:
+    app: opitkube-dummy
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 30
+    targetPort: 3000
+  selector:
+    app: optikube-dummy
