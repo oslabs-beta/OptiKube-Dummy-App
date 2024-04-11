@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ok-dummy-deploy
-  namespace: opitkube-dummy
+  namespace: optikube-dummy
 spec:
   selector:
     matchLabels:
-      app: opitkube-dummy
+      app: optikube-dummy
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ok-dummy
-        image: jshea915/optikube_dummy_app:latest
+        image: gcr.io/utility-folder-419300/ok-dummy-1.0p
         ports:
         - containerPort: 3000
         resources:
